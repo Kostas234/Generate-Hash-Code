@@ -1,0 +1,41 @@
+﻿@page "/generateHash"
+@inherits Data.GenerateHash
+
+<h3>Generate Hash</h3>
+
+<SfRadioButton Label="MD5" Name="options" Value="MD5" @bind-Checked="@stringChecked"></SfRadioButton>
+<SfRadioButton Label="SHA256" Name="options" Value="SHA256" @bind-Checked="@stringChecked"></SfRadioButton>
+<SfRadioButton Label="SHA384" Name="options" Value="SHA384" @bind-Checked="@stringChecked"></SfRadioButton>
+<div>
+    <SfTextBox Placeholder="Type some text..." Input="OnInput"></SfTextBox>
+@*    <SfButton OnClick="@(() => @hash=CreateMD5(text))">Generate</SfButton>*@
+      <SfButton OnClick="GetHash">Generate</SfButton>
+</div>
+<br />
+<p><b>@hash</b></p>
+
+
+@code {
+    private static string stringChecked = "MD5";
+    private bool showHash = false;
+    private static string text = "";
+    private string hash = "";
+    private void OnInput(InputEventArgs args)
+    {
+        text = args.Value;
+    }
+
+    private void GetHash()
+    {
+        if (stringChecked == "MD5")
+        {
+            hash = CreateMD5(text);
+        }
+        else if (stringChecked == "SHA256")
+        {
+            hash = CreateSHA256(text);
+        }
+        else
+            hash = CreateSHA384(text);
+    }
+}
