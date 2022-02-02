@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zakka\\source\\repos\\GenerateHashCode\\GenerateHashCode\\GenerateHashCode.csproj": {}
+    "C:\\GitRepository\\Generate-Hash-Code\\GenerateHashCode\\GenerateHashCode.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zakka\\source\\repos\\GenerateHashCode\\GenerateHashCode\\GenerateHashCode.csproj": {
+    "C:\\GitRepository\\Generate-Hash-Code\\GenerateHashCode\\GenerateHashCode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zakka\\source\\repos\\GenerateHashCode\\GenerateHashCode\\GenerateHashCode.csproj",
+        "projectUniqueName": "C:\\GitRepository\\Generate-Hash-Code\\GenerateHashCode\\GenerateHashCode.csproj",
         "projectName": "GenerateHashCode",
-        "projectPath": "C:\\Users\\zakka\\source\\repos\\GenerateHashCode\\GenerateHashCode\\GenerateHashCode.csproj",
-        "packagesPath": "C:\\Users\\zakka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zakka\\source\\repos\\GenerateHashCode\\GenerateHashCode\\obj\\",
+        "projectPath": "C:\\GitRepository\\Generate-Hash-Code\\GenerateHashCode\\GenerateHashCode.csproj",
+        "packagesPath": "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\",
+        "outputPath": "C:\\GitRepository\\Generate-Hash-Code\\GenerateHashCode\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\zakka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\KonstantinosZakkas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

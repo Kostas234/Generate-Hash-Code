@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components; 
 using System.Security.Cryptography;
 
 namespace GenerateHashCode.Data
 { 
     public class GenerateHash:ComponentBase
     {
-        public static string CreateMD5(string input)
+        public string CreateMD5(string input)
         {
             using (MD5 md5 = MD5.Create())
             {

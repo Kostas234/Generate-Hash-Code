@@ -1,4 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\obj\Debug\net5.0\scopedcss\bundle\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\zakka\.nuget\packages\syncfusion.blazor\19.4.0.47\build\..\staticwebassets\" />
+  <ContentRoot BasePath="/" Path="C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\KonstantinosZakkas\.nuget\packages\syncfusion.blazor\19.4.0.47\build\..\staticwebassets\" />
 </StaticWebAssets>

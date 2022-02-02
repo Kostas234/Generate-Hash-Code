@@ -13,98 +13,98 @@ namespace GenerateHashCode.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 1 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 2 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 3 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 4 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 5 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 6 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 7 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 8 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 9 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using GenerateHashCode;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 10 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using GenerateHashCode.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 11 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Syncfusion.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 12 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Syncfusion.Blazor.Inputs;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 13 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Syncfusion.Blazor.Buttons;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\_Imports.razor"
+#line 14 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\_Imports.razor"
 using Syncfusion.Blazor.Grids;
 
 #line default
@@ -119,7 +119,7 @@ using Syncfusion.Blazor.Grids;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 18 "C:\Users\zakka\source\repos\GenerateHashCode\GenerateHashCode\Pages\GenerateHash.razor"
+#line 18 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\GenerateHash.razor"
        
     private static string stringChecked = "MD5";
     private bool showHash = false;
@@ -138,10 +138,10 @@ using Syncfusion.Blazor.Grids;
         }
         else if (stringChecked == "SHA256")
         {
-            hash = CreateSHA256(text);
+            hash = "test";// CreateSHA256(text);
         }
         else
-            hash = CreateSHA384(text);
+            hash = "test"; // CreateSHA384(text);
     }
 
 #line default

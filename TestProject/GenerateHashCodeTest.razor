@@ -1,0 +1,35 @@
+﻿@using GenerateHashCode.Data
+@attribute [TestClass]
+@inherits BunitTestContext
+
+@code {
+    [TestClass]
+    public class TestClass
+    {
+        [TestMethod]
+        public void CreateMDTest()
+        {
+            var obj = new GenerateHash();
+            string expected = "E012A61C6D1A4F875A3CA17DF394BE98";
+            string actual = obj.CreateMD5("wewew");
+            Assert.AreEqual(expected, actual);
+        }
+    }
+    
+    [TestMethod]
+    public void TextShouldChangeWhenClicked()
+    {
+
+        // Arrange
+        var cut = Render(@<@Data.GenerateHash />);
+        var buttonElement = cut.Find("SfButton");
+
+        // Act: find and click the <SfButton> element in 
+        // the <@Data.GenerateHash> element
+        buttonElement.Click();
+
+        //Assert
+        buttonElement.MarkupMatches("<p><b>test</b></p>");
+    }
+
+}
