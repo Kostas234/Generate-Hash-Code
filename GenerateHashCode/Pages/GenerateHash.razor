@@ -1,8 +1,11 @@
 ﻿@page "/generateHash"
 @inherits Data.GenerateHash
-<caption></caption>
-<h3>Generate Hash</h3>
+@* The following injection is made for testing purposes*@
+@*@inject GenerateHashCode.Data.GenerateHash generateHash*@
 
+<h3>Generate Hash</h3>
+@*<Hello> again</Hello>
+*@
 <SfRadioButton Label="MD5" Name="options" Value="MD5" @bind-Checked="@stringChecked"></SfRadioButton>
 <SfRadioButton Label="SHA256" Name="options" Value="SHA256" @bind-Checked="@stringChecked"></SfRadioButton>
 <SfRadioButton Label="SHA384" Name="options" Value="SHA384" @bind-Checked="@stringChecked"></SfRadioButton>
@@ -14,22 +17,18 @@
 <br />
 <p><b>@hash</b></p>
 
-<button @onclick="GetDummy">DoNothing</button>
-<p>@dummy</p>
-
-
 @code {
+    public GenerateHash generateTheHash { get; set; }
     private static string stringChecked = "MD5";
     private bool showHash = false;
     private static string text = "";
     private string hash = "";
-    private string dummy = "";
     private void OnInput(InputEventArgs args)
     {
         text = args.Value;
     }
 
-    private void GetHash()
+    public void GetHash()
     {
         if (stringChecked == "MD5")
         {
@@ -37,14 +36,9 @@
         }
         else if (stringChecked == "SHA256")
         {
-            hash = "test";// CreateSHA256(text);
+            hash = CreateSHA256(text);
         }
         else
             hash = "test"; // CreateSHA384(text);
-    }
-
-    private void GetDummy()
-    {
-        dummy="test";
     }
 }

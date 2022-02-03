@@ -119,19 +119,19 @@ using Syncfusion.Blazor.Grids;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 21 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\GenerateHash.razor"
+#line 20 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\GenerateHash.razor"
        
+    public GenerateHash generateTheHash { get; set; }
     private static string stringChecked = "MD5";
     private bool showHash = false;
     private static string text = "";
     private string hash = "";
-    private string dummy = "";
     private void OnInput(InputEventArgs args)
     {
         text = args.Value;
     }
 
-    private void GetHash()
+    public void GetHash()
     {
         if (stringChecked == "MD5")
         {
@@ -139,15 +139,10 @@ using Syncfusion.Blazor.Grids;
         }
         else if (stringChecked == "SHA256")
         {
-            hash = "test";// CreateSHA256(text);
+            hash = CreateSHA256(text);
         }
         else
             hash = "test"; // CreateSHA384(text);
-    }
-
-    private void GetDummy()
-    {
-        dummy="test";
     }
 
 #line default

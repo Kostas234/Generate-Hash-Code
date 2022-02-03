@@ -126,3 +126,5 @@ C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\ref\Genera
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.pdb
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.genruntimeconfig.cache
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.csproj.AssemblyReference.cache
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\RazorDeclaration\Hello.razor.g.cs
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\Razor\Hello.razor.g.cs

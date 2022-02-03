@@ -1,47 +1,112 @@
-﻿@using GenerateHashCode.Pages
+﻿@using GenerateHashCode
+@using GenerateHashCode.Pages
 @using GenerateHashCode.Data
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
 @attribute [TestClass]
-@inherits BunitTestContext
 
 @code {
+    [TestClass]
+    public class Tests:BunitTestContext{
 
-    [TestMethod]
-    public void CreateMDTest()
-    {
-        var obj = new GenerateHashCode.Data.GenerateHash();
-        string expected = "E012A61C6D1A4F875A3CA17DF394BE98";
-        string actual = obj.CreateMD5("wewew");
-        Assert.AreEqual(expected, actual);
+        // MS Test
+        // [TestMethod]
+        public void CreateMDTest()
+        {
+            var obj = new GenerateHashCode.Data.GenerateHash();
+            string expected = "E012A61C6D1A4F875A3CA17DF394BE98";
+            string actual = obj.CreateMD5("wewew");
+            Assert.AreEqual(expected, actual);
+        }
+
+        //[TestMethod]
+        public void ParameterTests()
+        {
+            byte[] inputBytes = { 74, 65, 43, 33 };
+            byte[] hashBytes =  { 12, 43, 43, 23 };
+            var cut = Render(
+    @<GenerateHashCode.Data.GenerateHash
+                                        InputBytes = "inputBytes"
+                                        HashBytes = "hashBytes"  />);
+        }
+
+        //[TestMethod]
+        public void EventCallbackParametersTest()
+        {
+            // Action encpsulates a parameter that gets a  single
+            // argument and doesn't return a value
+            Action<MouseEventArgs> onClickHandler = _ => { };
+            Action onSomethingHandler = () => { };
+
+            var cut = Render(@<GenerateHashCode.Data.GenerateHash
+                              OnClick="onClickHandler"
+                              OnSomething="onSomethingHandler" />
+    );
+        }
+
+        //[TestMethod]
+        public void InjectionTest()
+        {
+            Services.AddSingleton<GenerateHashCode.Data.GenerateHash>();
+            var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
+            // Assert that the service is injected
+            Assert.IsNotNull(cut.Instance.generateTheHash);
+            //Services.AddSingleton<GenerateHash>(new GenerateHashCode.Data.GenerateHash());
+        }
+
+        [TestMethod]
+        public void MockComponent()
+        {
+            // Register the sub component
+            TestContext.ComponentFactories.AddStub<SfButton>();
+            // Render the component under test(cut)
+            IRenderedFragment cut = TestContext.Render(@<div />
+    );
+            // Verify that the sub component has substituted the
+            // original in the render tree
+            Assert.IsFalse(cut.HasComponent<SfButton>());
+            Assert.IsTrue(cut.HasComponent<Stub<SfButton>>());
+        }
+
+        //[TestMethod]
+        public void MarkupTests()
+        {
+            //RenderTree.Add<SfButton>
+
+            // Arrange
+            //var cut = Render(@<@GenerateHashCode.Pages.GenerateHash />);
+            var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
+            var h3 = cut.Find("h3");
+            var p = cut.Find("p");
+
+            p.MarkupMatches("<p><b>D41D8CD98F00B204E9800998ECF8427E</b></p>");
+            h3.MarkupMatches("<h3>Generate Hash</h3>");
+            //cut.MarkupMatches(@<h3>Generate Hash</h3>);
+            // Using MS unit Assert
+            //var ct = cut.Markup;
+            //Assert.AreEqual("<caption></caption>",ct);
+        }
+
+        //[TestMethod]
+        public void ButtonTest()
+        {
+            // Arrange
+            var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
+            var buttonElement = cut.FindComponent<SfButton>();
+            // Act: find and click the <SfButton> element in 
+            // the <GenerateHash> element
+            buttonElement.Find(".e-btn").Click();
+        }
+
+        //[TestMethod]
+        public void InputTest()
+        {
+            // Arrange
+            var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
+            var buttonElement = cut.FindComponent<SfTextBox>();
+            // Act: find the <SfTextBox> element in 
+            // the <GenerateHash> element
+        }
     }
-
-    [TestMethod]
-    public void MarkupTests()
-    {
-        Services.AddSyncfusionBlazor(options => {
-            options.IgnoreScriptIsolation = true;
-        });
-        Services.AddOptions();
-        //RenderTree.Add<SfButton>
-
-        // Arrange
-        //var cut = Render(@<@GenerateHashCode.Pages.GenerateHash />);
-        var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
-        var h3 = cut.Find("h3");
-        var p = cut.Find("p");
-        var buttonElement = cut.FindComponent<SfButton>();
-
-        // Act: find and click the <SfButton> element in 
-        // the <GenerateHash> element
-        buttonElement.Find(".e-btn").Click();
-  
-        p.MarkupMatches("<p><b>D41D8CD98F00B204E9800998ECF8427E</b></p>");
-        h3.MarkupMatches("<h3>Generate Hash</h3>");
-        //cut.MarkupMatches(@<h3>Generate Hash</h3>);
-        
-        // Using MS unit Assert
-        //var ct = cut.Markup;
-        //Assert.AreEqual("<caption></caption>",ct);
-    }
-}
+}s
