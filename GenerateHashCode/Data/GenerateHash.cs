@@ -27,7 +27,7 @@ namespace GenerateHashCode.Data
             }
         }
 
-        public static string CreateSHA256(string input)
+        public string CreateSHA256(string input)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
@@ -44,7 +44,7 @@ namespace GenerateHashCode.Data
             }
         }
 
-        public static string CreateSHA384(string input)
+        public string CreateSHA384(string input)
         {
             using (SHA384 sha384 = SHA384.Create())
             {

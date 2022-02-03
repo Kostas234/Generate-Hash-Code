@@ -125,3 +125,4 @@ C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHa
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\ref\GenerateHashCode.dll
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.pdb
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.genruntimeconfig.cache
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.csproj.AssemblyReference.cache

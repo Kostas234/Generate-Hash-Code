@@ -10,7 +10,22 @@
       "ProjectGuid": "aea3244b-61a1-4ff0-9b89-8101031f1cae",
       "DisplayName": "ConsoleApp1",
       "ColorIndex": 1
+    },
+    "709e0e2b-0faf-47b6-a051-f022658eb066": {
+      "ProjectGuid": "709e0e2b-0faf-47b6-a051-f022658eb066",
+      "DisplayName": "TestProject",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "b7ff175d-01ec-49f0-9755-60f1791485a0": {
+      "ProjectGuid": "b7ff175d-01ec-49f0-9755-60f1791485a0",
+      "DisplayName": "TestProject2",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

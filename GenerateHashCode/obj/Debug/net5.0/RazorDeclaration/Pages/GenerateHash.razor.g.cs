@@ -119,12 +119,13 @@ using Syncfusion.Blazor.Grids;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 18 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\GenerateHash.razor"
+#line 21 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\GenerateHash.razor"
        
     private static string stringChecked = "MD5";
     private bool showHash = false;
     private static string text = "";
     private string hash = "";
+    private string dummy = "";
     private void OnInput(InputEventArgs args)
     {
         text = args.Value;
@@ -142,6 +143,11 @@ using Syncfusion.Blazor.Grids;
         }
         else
             hash = "test"; // CreateSHA384(text);
+    }
+
+    private void GetDummy()
+    {
+        dummy="test";
     }
 
 #line default

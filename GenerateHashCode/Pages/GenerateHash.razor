@@ -1,6 +1,6 @@
 ﻿@page "/generateHash"
 @inherits Data.GenerateHash
-
+<caption></caption>
 <h3>Generate Hash</h3>
 
 <SfRadioButton Label="MD5" Name="options" Value="MD5" @bind-Checked="@stringChecked"></SfRadioButton>
@@ -14,12 +14,16 @@
 <br />
 <p><b>@hash</b></p>
 
+<button @onclick="GetDummy">DoNothing</button>
+<p>@dummy</p>
+
 
 @code {
     private static string stringChecked = "MD5";
     private bool showHash = false;
     private static string text = "";
     private string hash = "";
+    private string dummy = "";
     private void OnInput(InputEventArgs args)
     {
         text = args.Value;
@@ -37,5 +41,10 @@
         }
         else
             hash = "test"; // CreateSHA384(text);
+    }
+
+    private void GetDummy()
+    {
+        dummy="test";
     }
 }

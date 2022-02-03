@@ -1,35 +1,47 @@
-﻿@using GenerateHashCode.Data
+﻿@using GenerateHashCode.Pages
+@using GenerateHashCode.Data
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Buttons
 @attribute [TestClass]
 @inherits BunitTestContext
 
 @code {
-    [TestClass]
-    public class TestClass
-    {
-        [TestMethod]
-        public void CreateMDTest()
-        {
-            var obj = new GenerateHash();
-            string expected = "E012A61C6D1A4F875A3CA17DF394BE98";
-            string actual = obj.CreateMD5("wewew");
-            Assert.AreEqual(expected, actual);
-        }
-    }
-    
+
     [TestMethod]
-    public void TextShouldChangeWhenClicked()
+    public void CreateMDTest()
     {
+        var obj = new GenerateHashCode.Data.GenerateHash();
+        string expected = "E012A61C6D1A4F875A3CA17DF394BE98";
+        string actual = obj.CreateMD5("wewew");
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void MarkupTests()
+    {
+        Services.AddSyncfusionBlazor(options => {
+            options.IgnoreScriptIsolation = true;
+        });
+        Services.AddOptions();
+        //RenderTree.Add<SfButton>
 
         // Arrange
-        var cut = Render(@<@Data.GenerateHash />);
-        var buttonElement = cut.Find("SfButton");
+        //var cut = Render(@<@GenerateHashCode.Pages.GenerateHash />);
+        var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
+        var h3 = cut.Find("h3");
+        var p = cut.Find("p");
+        var buttonElement = cut.FindComponent<SfButton>();
 
         // Act: find and click the <SfButton> element in 
-        // the <@Data.GenerateHash> element
-        buttonElement.Click();
-
-        //Assert
-        buttonElement.MarkupMatches("<p><b>test</b></p>");
+        // the <GenerateHash> element
+        buttonElement.Find(".e-btn").Click();
+  
+        p.MarkupMatches("<p><b>D41D8CD98F00B204E9800998ECF8427E</b></p>");
+        h3.MarkupMatches("<h3>Generate Hash</h3>");
+        //cut.MarkupMatches(@<h3>Generate Hash</h3>);
+        
+        // Using MS unit Assert
+        //var ct = cut.Markup;
+        //Assert.AreEqual("<caption></caption>",ct);
     }
-
 }
