@@ -1,9 +1,11 @@
 ﻿@using GenerateHashCode
 @using GenerateHashCode.Pages
 @using GenerateHashCode.Data
+@using GenerateHashCode.Shared
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Inputs
+@using TestProject.Data
 @attribute [TestClass]
 
 @code {
@@ -25,12 +27,20 @@
         {
             byte[] inputBytes = { 74, 65, 43, 33 };
             byte[] hashBytes =  { 12, 43, 43, 23 };
-            var cut = Render(
-    @<GenerateHashCode.Data.GenerateHash
+            var cut = Render(@<GenerateHashCode.Data.GenerateHash
                                         InputBytes = "inputBytes"
                                         HashBytes = "hashBytes"  />);
-        }
+            // Passing a component(Heading) and HTML to the Child Content Parameter
+            var cut2 = Render(@<RenderFragmentChild><Heading></Heading><h1>This is a Child Content Component</h1></RenderFragmentChild>);
+            
+            // Cascading parameters
+            var cut3 = Render(@<CascadingValue Name="LoggedInUser" Value=@("TestUser")><GenerateHashCode.Data.GenerateHash/></CascadingValue>);
+            var cut4 = RenderComponent<GenerateHashCode.Data.GenerateHash>(parameters => parameters.Add(p=>p.UserName, "Test Name"));
 
+            // Rendering a component under test inside other components
+            //var cut5 = Render<Heading>(@<Index><Heading /></Index>);
+        }
+        //
         //[TestMethod]
         public void EventCallbackParametersTest()
         {
@@ -41,72 +51,105 @@
 
             var cut = Render(@<GenerateHashCode.Data.GenerateHash
                               OnClick="onClickHandler"
-                              OnSomething="onSomethingHandler" />
-    );
+                              OnSomething="onSomethingHandler" />);
         }
-
+        //
         //[TestMethod]
         public void InjectionTest()
         {
             Services.AddSingleton<GenerateHashCode.Data.GenerateHash>();
-            var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
-            // Assert that the service is injected
-            Assert.IsNotNull(cut.Instance.generateTheHash);
+            Services.AddSingleton<WeatherForecastService>(new WeatherForecastService());
             //Services.AddSingleton<GenerateHash>(new GenerateHashCode.Data.GenerateHash());
+            var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
+            var cut2 = RenderComponent<WeatherForecasts>();
+            // Assert that the service is injected
+            // Assert.IsNotNull(cut.Instance.generateTheHash);
+            Assert.IsNotNull(cut2.Instance.Forecasts);
+        }
+        //
+        [TestMethod]
+        public void AddComponentToRenderTreeTest()
+        {
+            // Check if component is already part of the render tree
+            RenderTree.TryAdd<CascadingValue<string>>(parameters => parameters.Add(p => p.Value, "Cheese?"));
+            // Adds the CascadingValue<string> component to the render tree and a cascading value to the test contexts root tree
+            // The next component that will be rendered, it will be rendered as a child
+            // whose virtual parent passes to it the cascading value
+            RenderTree.Add<CascadingValue<string>>(parameters => parameters.Add(p => p.Value, "Test"));
+            // The component will be renderd as a child of the last
+            // component added to the RenderTree property
+            var cut = RenderComponent<PrintCascadingValue>();
+            // Verify that the cascading value was passed correctly
+            cut.MarkupMatches($"Cascading value: Test");
         }
 
         [TestMethod]
         public void MockComponent()
         {
+            using var ctx = new Bunit.TestContext();
             // Register the sub component
-            TestContext.ComponentFactories.AddStub<SfButton>();
+            TestContext.ComponentFactories.AddStub<Heading>();
+            //ctx.ComponentFactories.AddStub<Heading>();
             // Render the component under test(cut)
-            IRenderedFragment cut = TestContext.Render(@<div />
+            IRenderedFragment cut = Render(@<Index />
     );
             // Verify that the sub component has substituted the
             // original in the render tree
-            Assert.IsFalse(cut.HasComponent<SfButton>());
-            Assert.IsTrue(cut.HasComponent<Stub<SfButton>>());
+            Assert.IsTrue(cut.HasComponent<Heading>());
+            Assert.IsTrue(cut.HasComponent<Stub<Heading>>());
         }
-
+        //
         //[TestMethod]
         public void MarkupTests()
         {
-            //RenderTree.Add<SfButton>
-
             // Arrange
-            //var cut = Render(@<@GenerateHashCode.Pages.GenerateHash />);
+            // var cut = Render(@<@GenerateHashCode.Pages.GenerateHash />);
             var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
             var h3 = cut.Find("h3");
             var p = cut.Find("p");
 
             p.MarkupMatches("<p><b>D41D8CD98F00B204E9800998ECF8427E</b></p>");
             h3.MarkupMatches("<h3>Generate Hash</h3>");
-            //cut.MarkupMatches(@<h3>Generate Hash</h3>);
+            // or cut.MarkupMatches(@<h3>Generate Hash</h3>);
+
             // Using MS unit Assert
             //var ct = cut.Markup;
             //Assert.AreEqual("<caption></caption>",ct);
         }
-
+        //
         //[TestMethod]
         public void ButtonTest()
         {
             // Arrange
             var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
             var buttonElement = cut.FindComponent<SfButton>();
+
             // Act: find and click the <SfButton> element in 
             // the <GenerateHash> element
             buttonElement.Find(".e-btn").Click();
+            cut.Find("b").MarkupMatches("<b>D41D8CD98F00B204E9800998ECF8427E</b>");
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void InputTest()
         {
             // Arrange
             var cut = RenderComponent<GenerateHashCode.Pages.GenerateHash>();
-            var buttonElement = cut.FindComponent<SfTextBox>();
+            //var inputElement = cut.FindComponent<SfTextBox>();
             // Act: find the <SfTextBox> element in 
             // the <GenerateHash> element
+            //inputElement.Find("SfTextBox").Input("");
+            //inputElement.MarkupMatches("");
+            cut.Find("").Change("test");
+
+        }
+        //
+        //[TestMethod]    
+        public void FallBackServiceProviderTest()
+        {
+            Services.AddFallbackServiceProvider(new FallBackServiceProvider());
+            var dummyService = Services.GetService<DummyService>();
+            Assert.IsNotNull(dummyService);
         }
     }
 }s

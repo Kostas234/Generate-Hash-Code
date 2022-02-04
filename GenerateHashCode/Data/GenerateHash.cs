@@ -23,13 +23,18 @@ namespace GenerateHashCode.Data
         [Parameter]
         public EventCallback OnSomething { get; set; }
 
+        [CascadingParameter(Name = "LoggedInUser")]
+        public string UserName { get; set; }
+
+        [CascadingParameter(Name = "LoggedInEmail")]
+        public string Email { get; set; }
+
         public string CreateMD5(string input)
         {
             using MD5 md5 = MD5.Create();
             InputBytes = System.Text.Encoding.ASCII.GetBytes(input);
             HashBytes = md5.ComputeHash(InputBytes);
-            /*Console.WriteLine(InputBytes);
-            Console.WriteLine(HashBytes);*/
+
             // Convert the byte array to hexadecimal string
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < HashBytes.Length; i++)
