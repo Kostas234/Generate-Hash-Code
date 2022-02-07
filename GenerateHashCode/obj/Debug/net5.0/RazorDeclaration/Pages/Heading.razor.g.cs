@@ -117,6 +117,29 @@ using Syncfusion.Blazor.Grids;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 6 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\Heading.razor"
+       
+  private string url;
+
+  [Parameter] public string GoToUrl { get; set; } = string.Empty;
+
+  protected override void OnInitialized()
+    => NavMan.LocationChanged += OnLocationChanged;
+
+  public void Dispose()
+    => NavMan.LocationChanged -= OnLocationChanged;
+
+  private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+  {
+    url = e.Location;
+    StateHasChanged();
+  }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMan { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -120,12 +120,15 @@ using Syncfusion.Blazor.Grids;
 #nullable restore
 #line 6 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Shared\RenderFragmentChild.razor"
        
-   //RenderFragmentChildClass childContent = new RenderFragmentChildClass();
+    //RenderFragmentChildClass childContent = new RenderFragmentChildClass();
 
     //public class RenderFragmentChildClass:ComponentBase
     //{
-        [Parameter]
-        public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public string type { get; set; }
+    public String id { get; set; }
     //}
 
 #line default

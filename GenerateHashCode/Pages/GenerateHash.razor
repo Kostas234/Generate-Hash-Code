@@ -19,10 +19,11 @@
 
 @code {
     public GenerateHash generateTheHash { get; set; }
-    private static string stringChecked = "MD5";
+    public string stringChecked { get; set; } = "SHA256";
     private bool showHash = false;
-    private static string text = "";
-    private string hash = "";
+    public string text { get; set; } = "";
+    public string hash { get; set; }
+
     private void OnInput(InputEventArgs args)
     {
         text = args.Value;
@@ -39,6 +40,6 @@
             hash = CreateSHA256(text);
         }
         else
-            hash = "test"; // CreateSHA384(text);
+            hash = CreateSHA384(text);
     }
 }

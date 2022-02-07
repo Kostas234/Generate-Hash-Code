@@ -123,6 +123,10 @@
               "target": "Package",
               "version": "[16.11.0, )"
             },
+            "RichardSzalay.MockHttp": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "bunit": {
               "target": "Package",
               "version": "[1.4.15, )"

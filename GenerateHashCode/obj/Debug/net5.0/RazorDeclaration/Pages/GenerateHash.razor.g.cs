@@ -122,10 +122,11 @@ using Syncfusion.Blazor.Grids;
 #line 20 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Pages\GenerateHash.razor"
        
     public GenerateHash generateTheHash { get; set; }
-    private static string stringChecked = "MD5";
+    public string stringChecked { get; set; } = "SHA256";
     private bool showHash = false;
-    private static string text = "";
-    private string hash = "";
+    public string text { get; set; } = "";
+    public string hash { get; set; }
+
     private void OnInput(InputEventArgs args)
     {
         text = args.Value;
@@ -142,7 +143,7 @@ using Syncfusion.Blazor.Grids;
             hash = CreateSHA256(text);
         }
         else
-            hash = "test"; // CreateSHA384(text);
+            hash = CreateSHA384(text);
     }
 
 #line default

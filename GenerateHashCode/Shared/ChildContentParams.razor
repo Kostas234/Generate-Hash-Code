@@ -1,0 +1,13 @@
+﻿<h3>ChildContentParams</h3>
+
+@code {
+    public class ChildContentParameters:ComponentBase
+    {
+        [Parameter]
+        public string Type { get; set; }
+        [Parameter]
+        public String Id { get; set; }
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
+    }
+}

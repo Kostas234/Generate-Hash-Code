@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BpVcxThR8Ebk5bE5o5hQYqagfo3PhnrJVap20r9Jh7mnlXjN16VWm9hDqdcBwOkH44VECkSJfAr0gztDRE1htw==",
+  "dgSpecHash": "4iWrnTA7EeDoUMDhlrGXgGUf8RPEpt4EsbVIe+UmGeINQhyB5XzVjNqKQDMnc/RgNoKt0l8l6smFcUvHDn7PqA==",
   "success": true,
   "projectFilePath": "C:\\GitRepository\\Generate-Hash-Code\\TestProject\\TestProject.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
+    "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\richardszalay.mockhttp\\6.0.0\\richardszalay.mockhttp.6.0.0.nupkg.sha512",
     "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\syncfusion.blazor\\19.4.0.47\\syncfusion.blazor.19.4.0.47.nupkg.sha512",
     "C:\\Users\\KonstantinosZakkas\\.nuget\\packages\\syncfusion.excelexport.net.core\\19.4.0.47\\syncfusion.excelexport.net.core.19.4.0.47.nupkg.sha512",

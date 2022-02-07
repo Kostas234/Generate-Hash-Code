@@ -4,11 +4,14 @@
 </div>
 
 @code {
-   //RenderFragmentChildClass childContent = new RenderFragmentChildClass();
+    //RenderFragmentChildClass childContent = new RenderFragmentChildClass();
 
     //public class RenderFragmentChildClass:ComponentBase
     //{
-        [Parameter]
-        public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public string type { get; set; }
+    public String id { get; set; }
     //}
 }

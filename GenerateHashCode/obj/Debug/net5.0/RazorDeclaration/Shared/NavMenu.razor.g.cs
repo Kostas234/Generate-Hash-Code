@@ -118,7 +118,7 @@ using Syncfusion.Blazor.Grids;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Shared\NavMenu.razor"
+#line 43 "C:\GitRepository\Generate-Hash-Code\GenerateHashCode\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

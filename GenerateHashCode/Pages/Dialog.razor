@@ -1,0 +1,48 @@
+﻿@page "/dialog"
+@using Syncfusion.Blazor.Popups
+
+<div>
+    @if (this.ShowButton)
+    {
+        <button class="e-btn" @onclick="@OnBtnClick">Open</button>
+    }
+</div>
+
+<SfDialog Width="335px" Target="#target" IsModal="true" @bind-Visible="Visibility">
+    <DialogTemplates>
+        <Header> Software Update </Header>
+        <Content>
+            <p>Your current software version is up to date.</p>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="OK" IsPrimary="true" OnClick="@DlgButtonClick" />
+    </DialogButtons>
+    <DialogEvents OnOpen="@DialogOpen" Closed="@DialogClose"></DialogEvents>
+    <DialogAnimationSettings Effect="@DialogEffect.None"></DialogAnimationSettings>
+</SfDialog>
+@code {
+        [Parameter]
+        public string HeaderTitle { get; set; }
+
+        private bool Visibility { get; set; } = true;
+
+        private bool ShowButton { get; set; } = false;
+
+        private void DialogOpen(object args)
+        {
+            ShowButton = false;
+        }
+        private void DialogClose(object args)
+        {
+            ShowButton = true;
+        }
+        private void OnBtnClick()
+        {
+            Visibility = true;
+        }
+        private void DlgButtonClick()
+        {
+            Visibility = false;
+        }
+}
