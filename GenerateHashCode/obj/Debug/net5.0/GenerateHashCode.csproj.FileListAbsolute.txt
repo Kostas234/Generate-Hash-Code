@@ -147,3 +147,8 @@ C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\RazorDecla
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\Razor\Shared\ChildContentParams.razor.g.cs
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\RazorDeclaration\Shared\AsyncData.razor.g.cs
 C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\Razor\Shared\AsyncData.razor.g.cs
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\GenerateHashCode.csproj.AssemblyReference.cache
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\RazorDeclaration\Pages\UserInfo.razor.g.cs
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\Razor\Pages\UserInfo.razor.g.cs
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\RazorDeclaration\Pages\UserRights.razor.g.cs
+C:\GitRepository\Generate-Hash-Code\GenerateHashCode\obj\Debug\net5.0\Razor\Pages\UserRights.razor.g.cs

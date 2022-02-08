@@ -1,15 +1,16 @@
 ﻿@using GenerateHashCode
-@using GenerateHashCode.Pages
 @using GenerateHashCode.Data
+@using GenerateHashCode.Pages
 @using GenerateHashCode.Shared
+@using Microsoft.AspNetCore.Components
+@using Microsoft.VisualStudio.TestTools.UnitTesting
 @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Inputs
+@using System.Security.Claims
 @using TestProject
 @using TestProject.Data
-@using Microsoft.VisualStudio.TestTools.UnitTesting
-@using Microsoft.AspNetCore.Components
-@using static System.Collections.IEnumerable
+@*@using static System.Collections.IEnumerable*@
 @attribute [TestClass]
 
 @code {
@@ -272,9 +273,68 @@
         }
 
         [TestMethod]
-        public void JSEmulation()
+        public void FakeAuthedication()
         {
+            // Unauthenticated and unauthorized state
+            var authContext = TestContext.AddTestAuthorization();
+            var cut = RenderComponent<UserInfo>();
+            cut.MarkupMatches(@"<h1>Please log in!</h1>
+    <p>State: Not authorized</p>");
 
+            // Authenticating and authorizing state
+            authContext.SetAuthorizing();
+            var cut2 = RenderComponent<UserInfo>();
+            cut2.MarkupMatches(@"<h1>Please log in!</h1>
+    <p>State: Authorizing</p>");
+
+            // Authenticated and unauthorized state
+            authContext.SetAuthorized("Test User", AuthorizationState.Unauthorized);
+            var cut3 = RenderComponent<UserInfo>();
+            cut3.MarkupMatches(@"<h1>Welcome Test User</h1>
+    <p>State: Not authorized</p>");
+
+            // Authenticated and authorized state
+            authContext.SetAuthorized("TEST USER");
+            var cut4 = RenderComponent<UserInfo>();
+            cut4.MarkupMatches(@"<h1>Welcome TEST USER</h1>
+    <p>State: Authorized</p>");
+
+            authContext.SetAuthorized("TEST USER");
+            authContext.SetRoles("superuser", "admin");
+            authContext.SetPolicies("content-editor", "approver");
+            var cut5 = RenderComponent<UserRights>();
+            cut5.MarkupMatches(@"<h1>Hi TEST USER, you have these claims and rights:</h1>
+    <ul>
+      <li>You have the role SUPER USER</li>
+      <li>You have the role ADMIN</li>
+      <li>You are a CONTENT EDITOR</li>
+      <li>You are an APPROVER</li>
+    </ul>");
+            // Claims
+            authContext.SetAuthorized("TEST USER");
+            authContext.SetRoles("");
+            authContext.SetPolicies("");
+            authContext.SetClaims(        
+                new Claim(ClaimTypes.Email, "test@example.com"),
+                new Claim(ClaimTypes.DateOfBirth, "01-01-1970")
+            );
+            var cut6 = RenderComponent<UserRights>();
+            cut6.MarkupMatches(@"<h1>Hi TEST USER, you have these claims and rights:</h1>
+    <ul>
+      <li>Emailaddress: test@example.com</li>
+      <li>Dateofbirth: 01-01-1970</li>
+    </ul>");
+            authContext.SetRoles("admin", "superuser");
+            authContext.SetPolicies("content-editor");
+            authContext.SetClaims(new Claim(ClaimTypes.Email, "test@example.com"));
+            var cut7 = RenderComponent<UserRights>();
+            cut7.MarkupMatches(@"<h1>Hi TEST USER, you have these claims and rights:</h1>
+                    <ul>
+                      <li>Emailaddress: test@example.com</li>
+                      <li>You have the role SUPER USER</li>
+                      <li>You have the role ADMIN</li>
+                      <li>You are a CONTENT EDITOR</li>
+                    </ul>");
         }
 
         [TestMethod]
