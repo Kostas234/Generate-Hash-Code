@@ -44,6 +44,7 @@ namespace GenerateHashCode.Data
             return stringBuilder.ToString();
         }
 
+
         public string CreateSHA256(string input)
         {
             using SHA256 sha256 = SHA256.Create();
